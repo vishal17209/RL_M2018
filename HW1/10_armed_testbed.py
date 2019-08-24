@@ -17,18 +17,18 @@ fig2 = plt.figure().add_subplot(111)
 for e in epsilons:
     q = np.zeros((number_bandits, k))
     n = np.zeros((number_bandits, k))
-    qi = np.random.normal(q_true, 1)
+    q_init = np.random.normal(q_true, 1)
 
     R_eps = []
     R_eps.append(0)
-    R_eps.append(np.mean(qi))
+    R_eps.append(np.mean(q_init))
     R_eps_opt = []
 
     for i in range(2,1001,1):
         opt_arm_pull = 0
         R_temp = []
         for j in range(number_bandits):
-            if(random.random() < e/10):
+            if(random.random() < e):
                 p = np.random.randint(k)
             else:
                 p = np.argmax(q[j]) 
